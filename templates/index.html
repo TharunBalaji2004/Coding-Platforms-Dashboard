@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset ="UTF-8">
+    <meta http-equiv ="X-UA-Compatible" content="IE-edge">
+    <meta name ="viewport" content="width=device-width,intial-scale=1.0">
+    <title>Staff login & Student login</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="body">
+<div class="container">
+    <div class="wrapper">
+    <img class="cit-logo" src="{{url_for('static', filename='img/cit_logo.png')}}" alt="cit logo">
+    </div>
+    <div class="headng">
+        <h2>Coding Platforms Dashboard</h2>
+    </div>
+    <div class="form-container signup-container">
+        <form action="/stafflogin" method="post">
+            <h2>Staff Login</h2>
+            <div class ="social-container">
+             <span></span>
+                <input type="text" name="username" placeholder="Username or Email Id">
+                <input type ="password" name="password" placeholder="Password">
+                <button type="submit" name="login">Sign in</button>
+            
+            </div>
+        </form>
+        {% if error %}
+            <div style="color:crimson">{{error}}</div>
+        {% endif %}
+    </div>
+
+</div>
+<div class="form-container stdlg-container">
+    <form action="" method="">
+        <h2>Student Login</h2>
+        <div class ="social-container">
+         <span></span>
+         <input type="text" name="studusername" placeholder="Username or Email Id">
+         <input type ="password" name="studpassword" placeholder="Password">
+         <button type="submit" name="studlogin">Sign in</button>
+         
+        </div>
+    </form>
+
+</div>
+</div>
+
+</body>
+</html>
