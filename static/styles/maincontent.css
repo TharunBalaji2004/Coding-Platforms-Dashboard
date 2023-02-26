@@ -7,7 +7,7 @@ table, th, td{
     border: 1px solid black;
     border-collapse: collapse;
     padding: 10px;
-    margin-bottom: 70px;
+    margin-bottom: 50px;
 }
 
 .btn-cc, .btn-lc, .btn-hr, .btn-gfg{
@@ -48,5 +48,17 @@ table, th, td{
     display: flex; 
     align-items: center;
     justify-content: center;
-    
+}
+
+.details{
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.temp{
+    margin-bottom: 20px;
+    padding-bottom: 20px;
 }

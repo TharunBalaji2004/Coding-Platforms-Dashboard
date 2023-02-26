@@ -1,23 +1,27 @@
 {% extends "navbar.html" %}
-{% block title %}DashBoard{% endblock %}
+{% block title %}DashBoard | {{section}}{% endblock %}
 {% block styles %}
     <link rel ="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/maincontent.css') }}">
 {% endblock %}
 {% block content %}
 <div align="center" class="main-div">
+    <div class="details">
+        <p>{{section}}</p>
+        <p></p>
+    </div>
     <div class="coding-profile">
         <p>Choose Coding Platform:</p>
         <form action="/codechef" method="post">
-            <input class="btn-cc" type="submit" value="CODECHEF" name="codechef" />
+            <input class="btn-cc" type="submit" value="CODECHEF" name="{{section}}" />
             </form>
         <form action="/leetcode" method="post">
-            <input class="btn-lc" type="submit" value="LEETCODE" name="leetcode" />
+            <input class="btn-lc" type="submit" value="LEETCODE" name="{{section}}" />
         </form> 
         <form action="/hackerrank" method="post">
-            <input class="btn-hr" type="submit" value="HACKERRANK" name="hackerrank" />
+            <input class="btn-hr" type="submit" value="HACKERRANK" name="{{section}}" />
         </form>
         <form action="/geeksforgeeks" method="post">
-            <input class="btn-gfg" type="submit" value="GEEKSFORGEEKS" name="geeksforgeeks" />
+            <input class="btn-gfg" type="submit" value="GEEKSFORGEEKS" name="{{section}}" />
         </form>
     </div>
     <table>
@@ -25,6 +29,7 @@
             <th>Register Number</th>
             <th>Name</th>
             <th>Profile Link</th>
+            
             {% for row in table_head %}
                 <th>{{row}}</th>
             {% endfor %}
@@ -44,5 +49,9 @@
         </tr>
         {% endfor %}
     </table>
+
+    <div>
+        <p class="temp"><a href="#">Go to Top</a></p>
+    </div>
 </div>
 {% endblock %}

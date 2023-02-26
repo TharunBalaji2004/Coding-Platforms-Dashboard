@@ -41,7 +41,7 @@ header .navbar ul li a{
 }
 
 header .navbar ul li a:hover{
-    background: #9f9f9f;
+    background: rgb(0, 115, 255);
     color: #ffffff;
 }
 

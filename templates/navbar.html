@@ -13,13 +13,13 @@
         <img clas="cit-logo" src="{{ url_for('static',filename='img/cit_logo.png') }}" alt="logo" />
         <nav class="navbar">
             <ul>
-                <li><a href="#">Home</a></li>
+                <li><a href="{{ url_for('dashboard') }}">Home</a></li>
                 <li><a href="#">LeaderBoard ▼</a>
                     <ul>
                         <li><a href="{{ url_for('dashboard') }}">General</a></li>
-                        <li><a href="{{ url_for('dashboard') }}">CSE A</a></li>
-                        <li><a href="{{ url_for('dashboard') }}">CSE B</a></li>
-                        <li><a href="{{ url_for('dashboard') }}">CSE C</a></li>
+                        <li><a href="{{ url_for('csea') }}">CSE A</a></li>
+                        <li><a href="{{ url_for('cseb') }}">CSE B</a></li>
+                        <li><a href="{{ url_for('csec') }}">CSE C</a></li>
                     </ul>
                 </li>
                 <li><a href="{{ url_for('logout') }}">Log Out</a></li>
