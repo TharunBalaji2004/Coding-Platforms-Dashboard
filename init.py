@@ -43,45 +43,117 @@ def dashboard():
     uname = session.get("username")
     if (uname is None):
         return redirect(url_for("login"))
+    section = "GENERAL LEADERBOARD"
+    return render_template("dashboard.html",username=uname,section=section)
 
-    return render_template("dashboard.html",username=uname)
+@app.route('/general')
+def general():
+    section = "GENERAL LEADERBOARD"
+    return render_template("dashboard.html",section=section)
+
+@app.route('/csea')
+def csea():
+    section = "CSE A LEADERBOARD"
+    return render_template("dashboard.html",section=section)
+
+@app.route('/cseb')
+def cseb():
+    section = "CSE B LEADERBOARD"
+    return render_template("dashboard.html",section = section)
+
+@app.route('/csec')
+def csec():
+    section = "CSE C LEADERBOARD"
+    
+    return render_template("dashboard.html",section = section)
+
+@app.route('/codechef', methods=['post','get'])
+def codechef():
+    temp = list(request.form.to_dict().keys())
+    section = temp[0]
+    class_name = ""
+
+    if ("CSE A" in section): class_name = "CSEA"
+    if ("CSE B" in section): class_name = "CSEB"
+    if ("CSE C" in section): class_name = "CSEC"
+    query = "SELECT * FROM {0}_CC;".format(class_name)
+    table_head = ["Rating","Div","Star"]
+
+    if ("GENERAL" in section):
+        query = "SELECT * FROM CSE_GENERAL_CC"
+        table_head = ["Class","Rating","Div","Star"]
+
+    
+    cursor.execute(query)
+    results = cursor.fetchall()
+    
+    return render_template("dashboard.html",results=results,table_head=table_head,section=section)
+
+@app.route('/leetcode', methods=['post','get'])
+def leetcode():
+    temp = list(request.form.to_dict().keys())
+    section = temp[0]
+    class_name = ""
+
+    if ("CSE A" in section): class_name = "CSEA"
+    if ("CSE B" in section): class_name = "CSEB"
+    if ("CSE C" in section): class_name = "CSEC"
+    query = "SELECT * FROM {0}_LC;".format(class_name)
+    table_head = ["Solved","Easy","Medium","Hard","Rating"]
+
+    if ("GENERAL" in section):
+        query = "SELECT * FROM CSE_GENERAL_LC"
+        table_head = ["Class","Solved","Easy","Medium","Hard","Rating"]
+        
+    cursor.execute(query)
+    results = cursor.fetchall()
+    
+    return render_template("dashboard.html",results=results,table_head=table_head,section=section)
+
+@app.route('/hackerrank', methods=['post','get'])
+def hackerrank():
+    temp = list(request.form.to_dict().keys())
+    section = temp[0]
+    class_name = ""
+
+    if ("CSE A" in section): class_name = "CSEA"
+    if ("CSE B" in section): class_name = "CSEB"
+    if ("CSE C" in section): class_name = "CSEC"
+    query = "SELECT * FROM {0}_HR;".format(class_name)
+    table_head = ["Badges Count","Python","C","C++","Java","SQL","Problem Solving"]
+
+    if ("GENERAL" in section):
+        query = "SELECT * FROM CSE_GENERAL_HR"
+        table_head = ["Class","Badges Count","Python","C","C++","Java","SQL","Problem Solving"]
+
+    cursor.execute(query)
+    results = cursor.fetchall()   
+    return render_template("dashboard.html",results=results,table_head=table_head,section=section)
+
+@app.route('/geeksforgeeks', methods=['post','get'])
+def geeksforgeeks():
+    temp = list(request.form.to_dict().keys())
+    section = temp[0]
+    class_name = ""
+    
+    if ("CSE A" in section): class_name = "CSEA"
+    if ("CSE B" in section): class_name = "CSEB"
+    if ("CSE C" in section): class_name = "CSEC"
+    query = "SELECT * FROM {0}_GFG;".format(class_name)
+    table_head = ["Solved","School","Basic","Easy","Medium","Hard"]
+
+    if ("GENERAL" in section):
+        query = "SELECT * FROM CSE_GENERAL_GFG"
+        table_head = ["Class","Solved","School","Basic","Easy","Medium","Hard"]
+        
+    cursor.execute(query)
+    results = cursor.fetchall()  
+    return render_template("dashboard.html",results=results,table_head=table_head,section=section)
 
 @app.route('/logout')
 def logout():
     session.pop("username",None)
     return redirect(url_for("login"))
-
-@app.route('/codechef', methods=['post','get'])
-def codechef():
-    query = "SELECT * FROM CSEC_CC;"
-    cursor.execute(query)
-    results = cursor.fetchall()
-    table_head = ["Rating","Div","Star"]
-    return render_template("dashboard.html",results=results,table_head=table_head,n=len(table_head))
-
-@app.route('/leetcode', methods=['post','get'])
-def leetcode():
-    query = "SELECT * FROM CSEC_LC;"
-    cursor.execute(query)
-    results = cursor.fetchall()
-    table_head = ["Solved","Easy","Medium","Hard","Rating"]
-    return render_template("dashboard.html",results=results,table_head=table_head,n=len(table_head))
-
-@app.route('/hackerrank', methods=['post','get'])
-def hackerrank():
-    query = "SELECT * FROM CSEC_HR;"
-    cursor.execute(query)
-    results = cursor.fetchall()
-    table_head = ["Badges Count","Python","C","C++","Java","SQL","Problem Solving"]
-    return render_template("dashboard.html",results=results,table_head=table_head,n=len(table_head))
-
-@app.route('/geeksforgeeks', methods=['post','get'])
-def geeksforgeeks():
-    query = "SELECT * FROM CSEC_GFG;"
-    cursor.execute(query)
-    results = cursor.fetchall()
-    table_head = ["Solved","School","Basic","Easy","Medium","Hard"]
-    return render_template("dashboard.html",results=results,table_head=table_head,n=len(table_head))
 
 @app.after_request
 def after_request(response):
