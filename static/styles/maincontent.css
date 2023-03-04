@@ -1,0 +1,84 @@
+.main-div{
+    padding-top: 60px;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+table, th, td{
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 10px;
+    margin-bottom: 50px;
+}
+
+.btn-cc, .btn-lc, .btn-hr, .btn-gfg, .btn-excel{
+    border: 2px solid rgb(255, 255, 255);
+    padding: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-family: 'Noto Sans', sans-serif;   
+}
+
+.btn-cc {
+    background-color: rgba(114,60,28,255);
+    color: white;
+    border-radius: 15px;
+}
+
+.btn-lc {
+    background-color: rgba(254,160,22,255);
+    color: white;
+    border-radius: 15px;
+}
+
+.btn-hr {
+    background-color: rgb(48,204,100);
+    color: white;
+    border-radius: 15px;
+}
+
+.btn-gfg {
+    background-color: rgb(44,140,68);
+    color: white;
+    border-radius: 15px;
+}
+
+.btn-excel {
+    background-color: rgb(0, 89, 255);
+    color: white;
+    border-radius: 15px;
+}
+
+.coding-profile{
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+}
+
+.details{
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.temp{
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+.footer-content {
+    color: grey;
+    bottom: 0;
+    padding:20px;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+}
+
+.refresh {
+    color: red;
+    font-weight: bold;
+}
